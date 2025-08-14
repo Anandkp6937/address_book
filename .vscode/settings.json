@@ -1,5 +1,7 @@
 {
      "files.associations": {
-          "populate.h": "c"
+          "populate.h": "c",
+          "contact.h": "c",
+          "stdlib.h": "c"
      }
 }

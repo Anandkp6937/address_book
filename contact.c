@@ -4,6 +4,9 @@
 #include "contact.h"
 #include "file.h"
 #include "populate.h"
+
+
+
 //if user enter a wrong input
 void noContactMsg(int found){
 	if(!found){
@@ -35,13 +38,13 @@ void listContacts(AddressBook *addressBook)
 
 void initialize(AddressBook *addressBook) {
 	//loading addres book from dummy contact
-   populateAddressBook(addressBook);
-
+	//populateAddressBook(addressBook);
    //later we use contact.txt file
+	populateAddressBook(addressBook);
 }
 
 void saveAndExit(AddressBook *addressBook) {
-  
+  saveContactsToFile(addressBook);
 }
 
 
@@ -150,12 +153,14 @@ void editContact(AddressBook *addressBook)
 	strcpy(addressBook->contacts[i].name,name);
 	strcpy(addressBook->contacts[i].phone,phone);
 	strcpy(addressBook->contacts[i].email,email);
+	printf("\n");
+	printf("\tNew edited contact is: \n");
+	printf("\n");
 
-	printf("New edited contact is: \n");
 
-	printf("%s 1",addressBook->contacts[i].name);
-	printf("%s 1",addressBook->contacts[i].phone);
-	printf("%s 1",addressBook->contacts[i].email);
+	printf("%s ",addressBook->contacts[i].name);
+	printf("%s ",addressBook->contacts[i].phone);
+	printf("%s ",addressBook->contacts[i].email);
 		}
 		found=1;
 	}
@@ -225,15 +230,15 @@ void deleteContact(AddressBook *addressBook)
 			
 			if(strcmp(addressBook->contacts[i].email,item)==0){
 				if(i<=count){		
-				for(int j=i;j<addressBook->contactCount;j++){
-					strcpy(addressBook->contacts[i].name,addressBook->contacts[i+1].name);
-					strcpy(addressBook->contacts[i].phone,addressBook->contacts[i+1].phone);
-					strcpy(addressBook->contacts[i].email,addressBook->contacts[i+1].email);
+				for(int j=i;j<addressBook->contactCount-1;j++){
+					strcpy(addressBook->contacts[i].name,addressBook->contacts[j+1].name);
+					strcpy(addressBook->contacts[i].phone,addressBook->contacts[j+1].phone);
+					strcpy(addressBook->contacts[i].email,addressBook->contacts[j+1].email);
 				}
 
 				addressBook->contactCount--;
 				listContacts(addressBook);
-
+	break;
 			}
 			else{
 				addressBook->contactCount--;

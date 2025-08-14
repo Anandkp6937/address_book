@@ -5,12 +5,11 @@ int main() {
        int choice=0;
        AddressBook var1;
        initialize(&var1);
-
 do{
 	 printf("\n");
        printf("\n");
  	printf("\033[1m \t Address menu \033[0m\n");
-	printf("\033[1;32m------------------------------------\033[0m\n"); // Red
+	printf("\033[1;32m------------------------------------\033[0m\n");
        printf("1.Create contact \n");
        printf("2.Edit contact \n");
        printf("3.Search contact \n");
@@ -47,9 +46,10 @@ do{
        break;
         case 6:
 
-	       printf("Save contact\n");
+	       printf("Saved Contact\n");
        break;
         case 7:
+        saveAndExit(&var1);
         printf("Saving the contact and exiting...\n");
        break;
 
